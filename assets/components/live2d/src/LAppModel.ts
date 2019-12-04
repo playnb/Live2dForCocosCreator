@@ -690,7 +690,7 @@ export default class Live2dModel extends CubismUserModel {
      */
     public setRandomExpression(): void {
         if (this._expressions.getSize() == 0) {
-            return;
+            return 
         }
 
         let no: number = Math.floor(Math.random() * this._expressions.getSize());
@@ -699,9 +699,10 @@ export default class Live2dModel extends CubismUserModel {
             if (i == no) {
                 let name: string = this._expressions._keyValues[i].first;
                 this.setExpression(name);
-                return;
+                return 
             }
         }
+        return
     }
 
     /**

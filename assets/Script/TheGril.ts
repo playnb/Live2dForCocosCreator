@@ -31,4 +31,12 @@ export default class TheGirl extends cc.Component {
         cc.find("Canvas/UI/New Label").getComponent(cc.Label).string = "切换动作"
         cc.find("Canvas/UI/New Label").getComponent(cc.Label).node.color = cc.Color.GREEN
     }
+
+    randomExpression() {
+        this.getComponentInChildren(Live2dComponent).live2d.getModel(0).setRandomExpression()
+    }
+
+    changeModel(toggle: cc.Toggle, name: string) {
+        this.getComponentInChildren(Live2dComponent).live2d.loadModel(name)
+    }
 }
