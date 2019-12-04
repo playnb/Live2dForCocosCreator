@@ -29,7 +29,7 @@
   - this.getComponent(Live2dComponent).live2d.getModel(0).startMotion(动作组名, 动作编号, 切换优先级(大数值打断小数值)) //执行动作
   - 动作结束会在Live2dComponent的节点emit事件Live2dComponent.EvtMotionFinish
   - this.getComponent(Live2dComponent).live2d.getModel(0).setExpression(表情名) //做表情
-  - this.getComponentInChildren(Live2dComponent).live2d.loadModel(模型名)  //加载模型,现在一次只有一个模型
+  - this.getComponent(Live2dComponent).live2d.loadModel(模型名)  //加载模型,现在一次只有一个模型
 
 # 注意事项
 - 资源默认放置在 resources\live2d 文件夹中
