@@ -2,17 +2,18 @@
 
 ### 根据[Lived2D 的官方 WebGL 示例](https://github.com/Live2D/CubismWebSamples)修改,适配 CocosCreator
 
+#### [在线示例](http://ltp.gitee.io/gym/cocos-creator/ShaderSample/live2d/web-mobile/index.html)
 ---
 
 # 使用方法
 
 - 将 assest/components 目录中的"live2d"文件夹拷贝到项目中
 
-  ![image](https://github.com/Live2D/CubismWebSamples/blob/master/res/拷贝live2d.png)
+  ![image](https://github.com/playnb/Live2dForCocosCreator/blob/master/res/拷贝live2d.png)
 
 - 场景中新建节点并附加组件"Live2dComponent"
 
-  ![image](https://github.com/Live2D/CubismWebSamples/blob/master/res/设置组件信息.png)
+  ![image](https://github.com/playnb/Live2dForCocosCreator/blob/master/res/设置组件信息.png)
 
   - 设置节点 Size 作为显示 Live2d 模型的画布尺寸,设置 ScaleY 为-1(不知道为什么我设置了 RenderTexture 的 setFlipY(true)也没有用,只能用 Scale 把节点倒置过来)
   - Render Texture: 可以不填,组件会自动创建 cc.RenderTexture 和 cc.Sprite 组件
