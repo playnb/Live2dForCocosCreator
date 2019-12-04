@@ -2,7 +2,7 @@
 
 ### 根据[Lived2D 的官方 WebGL 示例](https://github.com/Live2D/CubismWebSamples)修改,适配 CocosCreator
 
-#### [在线示例](http://ltp.gitee.io/gym/cocos-creator/ShaderSample/live2d/web-mobile/index.html)
+#### [在线示例(手机模式打开)](http://ltp.gitee.io/gym/cocos-creator/ShaderSample/live2d/web-mobile/index.html)
 ---
 
 # 使用方法
@@ -21,6 +21,13 @@
   - Fps: Live2d 的刷新率(游戏 Live2d 在 update 的时候有相当的计算量,所以这里的 fps 可以比游戏的低一些,感觉 30fps 足够了,即使 20fps 也不觉得卡)
   - Loop Idel Motion: 是否自动循环Idel动作
   - Model Name: 加载live2d模型的名字
+  
+- 常用函数
+  - this.getComponent(Live2dComponent.live2d //获取Live2d代理对象
+  - this.getComponent(Live2dComponent).live2d.getModel(0) //获取Live2d模型
+  - this.getComponent(Live2dComponent).live2d.getModel(0).startMotion(动作组名, 动作编号, 切换优先级(大数值打断小数值)) //执行动作
+  - 动作结束会在Live2dComponent的节点emit事件Live2dComponent.EvtMotionFinish
+  - this.getComponent(Live2dComponent).live2d.getModel(0).setExpression(表情名) //做表情
 
 # 注意事项
 - 资源默认放置在 resources\live2d 文件夹中
@@ -31,3 +38,5 @@
   - XXX.pose3.json => XXX_pose3.bin
   - XXX.userdata3.json => XXX_userdata3.bin
   - XXX.motion3.json => XXX_motion3.bin
+
+
