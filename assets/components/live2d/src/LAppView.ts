@@ -1,11 +1,11 @@
 
 import { Live2DCubismFramework as cubismMatrix44 } from "../CubismSdkForWeb/Framework/math/cubismmatrix44";
 import { Live2DCubismFramework as cubismViewMatrix } from "../CubismSdkForWeb/Framework/math/cubismviewmatrix";
-import Live2dDelegate from "./Live2dDelegate";
-import Live2dDefine from "./Live2dDefine";
-import { TextureInfo } from "./Live2dTextureManager";
-import Live2dSprite from "./Live2dSprite";
-import Live2dModelManager from "./Live2dModelManager";
+import Live2dDelegate from "./LAppDelegate";
+import Live2dDefine from "./LAppDefine";
+import { TextureInfo } from "./LAppTextureManager";
+import Live2dSprite from "./LAppSprite";
+import Live2dModelManager from "./LAppModelManager";
 
 export default class Live2dView {
 

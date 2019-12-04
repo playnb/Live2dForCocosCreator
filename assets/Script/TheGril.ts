@@ -1,56 +1,34 @@
 import Live2dComponent from "../components/live2d/Live2dComponent";
-import Live2dDefine from "../components/live2d/src/Live2dDefine";
-
-// Learn TypeScript:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
+import Live2dDefine from "../components/live2d/src/LAppDefine";
+import Live2dModel from "../components/live2d/src/LAppModel";
 
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class TheGirl extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
-
     // onLoad () {}
 
-    private callRender: boolean = false
     start() {
         let self = this
-        this.node.on(cc.Node.EventType.TOUCH_START, (evt: cc.Event.EventTouch) => {
-            let model = self.getComponent(Live2dComponent).live2d.getModel(0)
-            model.startRandomMotion("TapBody", Live2dDefine.PriorityNormal)
-            cc.log("Tap")
+        self.getComponentInChildren(Live2dComponent).node.on(Live2dComponent.EvtMotionFinish, (model: Live2dModel) => {
+            cc.find("Canvas/UI/New Label").getComponent(cc.Label).string = "动作结束"
+            cc.find("Canvas/UI/New Label").getComponent(cc.Label).node.color = cc.Color.YELLOW
         })
-
-        let tex = new cc.RenderTexture()
-        tex.initWithSize(100, 100)
-        let c = cc.find("Canvas/New Camera").getComponent(cc.Camera)
-        if (c.enabled) {
-            c.enabled = false
-            c.targetTexture = tex
-            c.render(this.node)
-        }
+        self.getComponentInChildren(Live2dComponent).loopIdelMotion = false
     }
 
     update(dt: number) {
-        //cc.find("Canvas/New Camera").getComponent(cc.Camera).render(this.node)
-        if (this.callRender) {
-            let c = cc.find("Canvas/New Camera").getComponent(cc.Camera)
-            c.render(this.node)
-        }
-        //c["beforeDraw"]()
+    }
+
+    changeMotion1() {
+        this.getComponentInChildren(Live2dComponent).live2d.getModel(0).startRandomMotion(Live2dDefine.MotionGroupIdle, Live2dDefine.PriorityIdle)
+        cc.find("Canvas/UI/New Label").getComponent(cc.Label).string = "切换动作"
+        cc.find("Canvas/UI/New Label").getComponent(cc.Label).node.color = cc.Color.GREEN
+    }
+    changeMotion2() {
+        this.getComponentInChildren(Live2dComponent).live2d.getModel(0).startRandomMotion(Live2dDefine.MotionGroupTapBody, Live2dDefine.PriorityForce)
+        cc.find("Canvas/UI/New Label").getComponent(cc.Label).string = "切换动作"
+        cc.find("Canvas/UI/New Label").getComponent(cc.Label).node.color = cc.Color.GREEN
     }
 }

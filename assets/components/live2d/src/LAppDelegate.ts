@@ -1,12 +1,12 @@
-import Live2dView from "./Live2dView";
+import Live2dView from "./LAppView";
 
 import { Live2DCubismFramework as live2dcubismframework, Option as Csm_Option, Option } from "../CubismSdkForWeb/Framework/live2dcubismframework";
 import { Live2DCubismFramework as cubismMatrix44 } from "../CubismSdkForWeb/Framework/math/cubismmatrix44";
-import Live2dTextureManager from "./Live2dTextureManager";
-import Live2dModelManager from "./Live2dModelManager";
-import Live2dPlatform from "./Live2dPlatform";
-import Live2dDefine from "./Live2dDefine";
-import Live2dModel from "./Live2dModel";
+import Live2dTextureManager from "./LAppTextureManager";
+import Live2dModelManager from "./LAppModelManager";
+import Live2dPlatform from "./LAppPlatform";
+import Live2dDefine from "./LAppDefine";
+import Live2dModel from "./LAppModel";
 
 // Learn TypeScript:
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
@@ -20,13 +20,13 @@ import Live2dModel from "./Live2dModel";
 
 const { ccclass, property } = cc._decorator;
 
-@ccclass
 export default class Live2dDelegate {
     private _width: number = 0
     private _height: number = 0
     private _gl: WebGLRenderingContext = null
 
     public scale: number = 1
+    public loopIdelMotion: boolean = true
 
     get width(): number { return this._width }
     get height(): number { return this._height }
@@ -46,8 +46,8 @@ export default class Live2dDelegate {
         this._height = height
         this._frameBuffer = frameBuffer
 
-        gl.enable(gl.BLEND)
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+        //gl.enable(gl.BLEND)
+        //gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 
         this._view = new Live2dView(this)
         this._texMgr = new Live2dTextureManager(this)
@@ -62,6 +62,8 @@ export default class Live2dDelegate {
     public getModel(index: number): Live2dModel {
         return Live2dModelManager.getInstance().getModel(0)
     }
+
+    public onFinishMotion: (model: Live2dModel) => boolean  //返回是否循环Idel动作s
 
     //============================================================================================================================
     private initializeCubism(): void {

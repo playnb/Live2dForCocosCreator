@@ -1,10 +1,10 @@
 
 import { Live2DCubismFramework as cubismMatrix44 } from "../CubismSdkForWeb/Framework/math/cubismmatrix44";
 import { Live2DCubismFramework as csmVector } from "../CubismSdkForWeb/Framework/type/csmvector";
-import Live2dModel from "./Live2dModel";
-import Live2dDelegate from "./Live2dDelegate";
-import Live2dDefine from "./Live2dDefine";
-import Live2dPlatform from "./Live2dPlatform";
+import Live2dModel from "./LAppModel";
+import Live2dDelegate from "./LAppDelegate";
+import Live2dDefine from "./LAppDefine";
+import Live2dPlatform from "./LAppPlatform";
 
 export default class Live2dModelManager {
     private static _instance: Live2dModelManager = null

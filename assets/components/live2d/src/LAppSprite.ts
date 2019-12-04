@@ -1,4 +1,4 @@
-import Live2dDelegate from "./Live2dDelegate";
+import Live2dDelegate from "./LAppDelegate";
 
 
 export class Rect {

@@ -39,10 +39,10 @@ import ICubismModelSetting = icubismmodelsetting.ICubismModelSetting;
 import CubismModelSettingJson = cubismmodelsettingjson.CubismModelSettingJson;
 import CubismDefaultParameterId = cubismdefaultparameterid;
 
-import { TextureInfo } from "./Live2dTextureManager";
-import Live2dDelegate from "./Live2dDelegate";
-import Live2dDefine from "./Live2dDefine";
-import Live2dPlatform from "./Live2dPlatform";
+import { TextureInfo } from "./LAppTextureManager";
+import Live2dDelegate from "./LAppDelegate";
+import Live2dDefine from "./LAppDefine";
+import Live2dPlatform from "./LAppPlatform";
 
 function createBuffer(path: string, callBack: any): void {
     Live2dPlatform.loadFileAsBytes(path, callBack);
@@ -520,7 +520,10 @@ export default class Live2dModel extends CubismUserModel {
         this._model.loadParameters();   // 前回セーブされた状態をロード
         if (this._motionManager.isFinished()) {
             // モーションの再生がない場合、待機モーションの中からランダムで再生する
-            this.startRandomMotion(Live2dDefine.MotionGroupIdle, Live2dDefine.PriorityIdle);
+
+            if ((this._app.onFinishMotion && this._app.onFinishMotion(this)) || (!this._app.onFinishMotion && this._app.loopIdelMotion)) {
+                this.startRandomMotion(Live2dDefine.MotionGroupIdle, Live2dDefine.PriorityIdle);
+            }
         }
         else {
             motionUpdated = this._motionManager.updateMotion(this._model, deltaTimeSeconds);    // モーションを更新

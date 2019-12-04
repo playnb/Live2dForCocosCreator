@@ -1,5 +1,5 @@
 import { Live2DCubismFramework as csmvector } from "../CubismSdkForWeb/Framework/type/csmvector";
-import Live2dDelegate from "./Live2dDelegate";
+import Live2dDelegate from "./LAppDelegate";
 
 
 export class TextureInfo {
@@ -51,7 +51,7 @@ export default class Live2dTextureManager {
 
         let path = fileName.substr(0, fileName.lastIndexOf(".png"))
         cc.loader.loadRes(path, cc.Texture2D, (err: Error, res: cc.Texture2D) => {
-            cc.log(path, fileName, res)
+            //cc.log(path, fileName, res)
 
             if (false) {
                 let tex: WebGLTexture = res["_texture"]._glID
