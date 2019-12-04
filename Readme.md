@@ -3,6 +3,7 @@
 ### 根据[Lived2D 的官方 WebGL 示例](https://github.com/Live2D/CubismWebSamples)修改,适配 CocosCreator
 
 #### [在线示例(手机模式打开)](http://ltp.gitee.io/gym/cocos-creator/ShaderSample/live2d/web-mobile/index.html)
+  ![image](https://github.com/playnb/Live2dForCocosCreator/blob/master/res/show.gif)
 ---
 
 # 使用方法
