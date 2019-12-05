@@ -40,5 +40,6 @@
   - XXX.pose3.json => XXX_pose3.bin
   - XXX.userdata3.json => XXX_userdata3.bin
   - XXX.motion3.json => XXX_motion3.bin
+  - 使用脚本resource/rename_live2d.py可自动转换resource/live2d目录下的文件名
 
 
